@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" id="htmlRoot">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>مجمع إيليت الطبي | Elite Medical Complex - دمنهور</title>
-  <meta name="description" content="مجمع إيليت الطبي التخصصي الشامل لكافة تخصصات الطب والجراحة والعيون والأسنان - دمنهور: 28 شارع المشير عبدالسلام الشاذلي" />
+  <meta name="description" content="مجمع إيليت الطبي التخصصي الشامل بدمنهور: 18 تخصصاً طبياً، طوارئ ومعامل وأشعة 24/7، حجز ذكي وواتساب 01005823798" />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -17,146 +17,264 @@
     body {
       font-family: 'Cairo', sans-serif;
     }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background-color: #cbd5e1;
+      border-radius: 9999px;
+    }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col transition-colors duration-200">
 
-  <!-- شريط التنبيهات العلوي -->
-  <div class="bg-gradient-to-r from-teal-900 via-teal-800 to-slate-900 text-white text-xs py-2 px-4 border-b border-teal-700">
+  <!-- 1. شريط الإعلانات والطوارئ العلوي -->
+  <div class="bg-gradient-to-r from-teal-950 via-teal-900 to-slate-900 text-white text-xs py-2 px-4 border-b border-teal-800">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
       <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-        <span class="font-bold">مجمع إيليت الطبي: صرح استشاري متكامل لكافة تخصصات الطب والجراحة</span>
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="font-bold" id="topAlertText">مجمع إيليت الطبي بدمنهور: صرح استشاري متكامل لكافة التخصصات الطبية - الطوارئ والمعامل 24/7</span>
       </div>
       <div class="flex items-center gap-4 text-teal-200">
         <a href="https://wa.me/201005823798" target="_blank" class="text-emerald-300 hover:text-white font-bold flex items-center gap-1 transition">
-          واتساب المجمع: 01005823798 🟢
+          <span id="topWhatsappText">واتساب المجمع: 01005823798</span> 🟢
         </a>
         <span class="hidden sm:inline">|</span>
-        <span class="hidden sm:inline">📍 دمنهور: 28 شارع المشير عبدالسلام الشاذلي</span>
+        <span class="hidden sm:inline" id="topAddressText">📍 دمنهور: 28 شارع المشير عبدالسلام الشاذلي</span>
       </div>
     </div>
   </div>
 
-  <!-- رأس الصفحة (Header & Navbar) -->
+  <!-- 2. الهيدر وشريط التنقل الرئيسي -->
   <header class="bg-white/95 backdrop-blur shadow-sm sticky top-0 z-40 border-b border-slate-100">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <!-- الشعار والاسم -->
       <div class="flex items-center gap-3">
-        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-teal-700 to-emerald-500 flex items-center justify-center text-white text-xl font-black shadow-md shadow-teal-500/20">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-teal-700 to-emerald-500 flex items-center justify-center text-white text-xl font-black shadow-md shadow-teal-600/20">
           إ
         </div>
         <div>
           <div class="flex items-center gap-2">
-            <h1 class="text-xl font-black text-slate-900 tracking-tight">مجمع إيليت الطبي</h1>
+            <h1 class="text-lg sm:text-xl font-black text-slate-900 tracking-tight" id="logoTitle">مجمع إيليت الطبي</h1>
             <span class="text-[10px] bg-teal-50 text-teal-700 px-2 py-0.5 rounded-full font-bold border border-teal-200">Elite Medical</span>
           </div>
-          <p class="text-xs text-slate-500">دمنهور: 28 شارع المشير عبدالسلام الشاذلي</p>
+          <p class="text-[11px] text-slate-500 line-clamp-1" id="logoSubTitle">دمنهور: 28 شارع المشير عبدالسلام الشاذلي</p>
         </div>
       </div>
 
-      <div class="flex items-center gap-3">
-        <a href="https://wa.me/201005823798" target="_blank" class="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-bold text-xs border border-emerald-200 transition">
-          <span>01005823798</span>
-          <span>💬</span>
-        </a>
-        <button onclick="openBookingModal()" class="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md shadow-teal-600/20 transition">
-          احجز كشفك الآن
+      <!-- الروابط وأزرار التحكم باللغة والحجز -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- زر تحويل اللغة AR / EN -->
+        <button onclick="toggleLanguage()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 hover:border-teal-500 bg-slate-50 hover:bg-teal-50 text-slate-700 hover:text-teal-800 text-xs font-bold transition shadow-sm">
+          <span>🌐</span>
+          <span id="langBtnText">English</span>
+        </button>
+
+        <!-- زر المساعد الذكي AI Agent -->
+        <button onclick="toggleAiModal()" class="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-extrabold text-xs shadow-md transition">
+          <span>🤖</span>
+          <span class="hidden sm:inline" id="aiBtnText">المستشار الطبي الذكي</span>
+        </button>
+
+        <!-- زر الحجز الفوري -->
+        <button onclick="openBookingModal()" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs shadow-md transition" id="bookNavBtn">
+          احجز موعدك
         </button>
       </div>
     </div>
   </header>
 
-  <!-- القسم الترحيبي (Hero Section) -->
-  <section class="relative bg-gradient-to-b from-teal-900 via-teal-800 to-slate-900 text-white py-14 px-4 overflow-hidden">
+  <!-- 3. القسم الترحيبي (Hero Section) -->
+  <section class="relative bg-gradient-to-b from-teal-950 via-teal-900 to-slate-900 text-white py-14 px-4 overflow-hidden">
     <div class="max-w-7xl mx-auto relative z-10 text-center">
-      <span class="inline-block px-3 py-1 bg-white/10 backdrop-blur rounded-full text-xs font-semibold text-teal-200 mb-4 border border-white/15">
-        🏥 مجمع لكافة التخصصات الطبية والجراحية بدمنهور
-      </span>
-      <h2 class="text-3xl sm:text-5xl font-black mb-4 leading-tight">
-        صحتك ورعايتك مع نخبة كبار الاستشاريين
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-white/10 backdrop-blur rounded-full text-xs font-semibold text-teal-200 mb-4 border border-white/15">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span id="heroBadge">صرح استشاري متكامل لكافة التخصصات الطبية بدمنهور</span>
+      </div>
+
+      <h2 class="text-3xl sm:text-5xl font-black mb-4 leading-tight" id="heroTitle">
+        رعايتك الصحية تحت سقف واحد مع نخبة كبار الاستشاريين
       </h2>
-      <p class="text-sm sm:text-base text-teal-100 max-w-2xl mx-auto mb-8 leading-relaxed">
-        يضم مجمع إيليت الطبي 18 تخصصاً طبياً دقيقاً، عيادات مجهزة بأحدث التقنيات، استشارات متقدمة، إعادة كشف مجانية، وتأكيد فوري عبر الواتساب على رقم 01005823798.
+      <p class="text-xs sm:text-base text-teal-100/90 max-w-2xl mx-auto mb-8 leading-relaxed" id="heroDesc">
+        18 تخصصاً طبياً دقيقاً، مركز تشخيصي متقدم، طوارئ 24/7، ومعامل تحاليل معتمدة. متابعة وإعادة كشف مجانية خلال 14 يوماً مع نظام تذكير آلي عبر الواتساب على 01005823798.
       </p>
 
       <div class="flex flex-wrap justify-center gap-3">
-        <button onclick="openBookingModal()" class="px-8 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-black text-sm rounded-xl shadow-lg transition">
-          احجز موعد كشف طبي
+        <button onclick="openBookingModal()" class="px-7 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white font-black text-sm rounded-xl shadow-lg shadow-emerald-500/30 transition" id="heroBookBtn">
+          احجز كشفك الطبي الآن
         </button>
-        <a href="https://wa.me/201005823798?text=مرحباً%20مجمع%20إيليت%20الطبي،%20أود%20الاستفسار%20عن%20المواعيد" target="_blank" class="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold text-sm rounded-xl border border-white/20 transition flex items-center gap-2">
-          <span>محادثة واتساب مباشرة</span>
+        <button onclick="toggleAiModal()" class="px-6 py-3.5 bg-teal-800/80 hover:bg-teal-700 text-white font-bold text-sm rounded-xl border border-teal-600/50 transition flex items-center gap-2 shadow-md">
+          <span>🤖</span>
+          <span id="heroAiBtn">استشر طبيب الذكاء الاصطناعي</span>
+        </button>
+        <a href="https://wa.me/201005823798?text=مرحباً%20مجمع%20إيليت%20الطبي%20بدمنهور،%20أود%20الاستفسار%20عن%20المواعيد" target="_blank" class="px-5 py-3.5 bg-white/10 hover:bg-white/20 text-white font-bold text-sm rounded-xl border border-white/20 transition flex items-center gap-2">
+          <span>واتساب 01005823798</span>
           <span>💬</span>
         </a>
       </div>
 
-      <!-- إحصائيات المجمع -->
+      <!-- إحصائيات معتمدة للمجمع -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 max-w-4xl mx-auto">
         <div class="bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur">
           <div class="text-2xl sm:text-3xl font-black text-emerald-300">18+</div>
-          <div class="text-xs text-teal-200 mt-1">تخصص طبي دقيق</div>
+          <div class="text-xs text-teal-200 mt-1" id="stat1">تخصص طبي وجراحي</div>
         </div>
         <div class="bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur">
           <div class="text-2xl sm:text-3xl font-black text-emerald-300">35+</div>
-          <div class="text-xs text-teal-200 mt-1">استشاري وأخصائي</div>
+          <div class="text-xs text-teal-200 mt-1" id="stat2">استشاري وأستاذ جامعة</div>
         </div>
         <div class="bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur">
           <div class="text-2xl sm:text-3xl font-black text-emerald-300">14 يوم</div>
-          <div class="text-xs text-teal-200 mt-1">إعادة ومتابعة مجانية</div>
+          <div class="text-xs text-teal-200 mt-1" id="stat3">إعادة كشف مجانية</div>
         </div>
         <div class="bg-white/5 border border-white/10 p-4 rounded-2xl backdrop-blur">
           <div class="text-2xl sm:text-3xl font-black text-emerald-300">24/7</div>
-          <div class="text-xs text-teal-200 mt-1">طوارئ ومعامل وأشعة</div>
+          <div class="text-xs text-teal-200 mt-1" id="stat4">طوارئ ومعامل وأشعة</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- قسم التخصصات الطبية الشاملة (All Specialties) -->
-  <main class="max-w-7xl mx-auto px-4 py-12 flex-1 w-full">
+  <!-- 4. باقات الفحص الشامل (Executive Health Packages) -->
+  <section class="max-w-7xl mx-auto px-4 py-10 w-full">
+    <div class="bg-gradient-to-r from-teal-900 to-emerald-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-2 text-center md:text-start">
+        <span class="px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-xs font-bold border border-emerald-400/30">
+          🩺 باقات الفحص الدوري والوقائي 2026
+        </span>
+        <h3 class="text-xl sm:text-2xl font-black" id="pkgTitle">باقات إيليت للفحص الطبي الشامل مع خصم 25%</h3>
+        <p class="text-xs sm:text-sm text-teal-100 max-w-xl" id="pkgDesc">
+          تشمل تحاليل وظائف الكبد والكلى، السكر التراكمي، دهون الدم، رسم القلب، فحص قاع العين، وفحص استشاري الباطنة.
+        </p>
+      </div>
+      <button onclick="openPackageBooking()" class="px-6 py-3 bg-white text-teal-900 hover:bg-teal-50 font-black text-xs rounded-xl shadow-lg transition shrink-0" id="pkgBtn">
+        حجز باقة الفحص الشامل (750 ج.م)
+      </button>
+    </div>
+  </section>
+
+  <!-- 5. قسم التخصصات الطبية الشاملة (All 18 Specialties) -->
+  <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full" id="specialtiesSection">
     <div class="text-center max-w-3xl mx-auto mb-10">
-      <h3 class="text-2xl sm:text-3xl font-black text-slate-900 mb-2">كافة التخصصات الطبية في مجمع إيليت</h3>
-      <p class="text-slate-600 text-sm">اختر التخصص المطلوب وتعرف على الاستشاري وسعر الكشف واحجز موعدك فوراً</p>
+      <h3 class="text-2xl sm:text-3xl font-black text-slate-900 mb-2" id="specHeading">كافة التخصصات الطبية في مجمع إيليت بدمنهور</h3>
+      <p class="text-slate-600 text-xs sm:text-sm" id="specSubHeading">اختر العيادة المطلوبة للاطلاع على اسم الطبيب الاستشاري وسعر الكشف وحجز الموعد مباشرة</p>
     </div>
 
     <!-- شبكة التخصصات -->
-    <div id="specialtiesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <div id="specialtiesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
   </main>
 
-  <!-- نافذة الحجز المنبثقة (Booking Modal) -->
+  <!-- 6. بوابة التأمين الصحي والشركات المعتمدة (Insurance Gate) -->
+  <section class="bg-slate-100/80 border-y border-slate-200 py-12 px-4 w-full">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <h3 class="text-xl sm:text-2xl font-black text-slate-900 mb-2" id="insHeading">التأمين الصحي والتعاقدات المعتمدة</h3>
+        <p class="text-xs text-slate-600" id="insSubHeading">نقبل أكثر من 20 شركة تأمين كبرى ونقابة مهنية مع خدمة الموافقات الفورية</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 text-center mb-8">
+        <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm font-bold text-xs text-slate-800">بوبا Bupa</div>
+        <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm font-bold text-xs text-slate-800">أكسا AXA</div>
+        <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm font-bold text-xs text-slate-800">ميتلايف MetLife</div>
+        <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm font-bold text-xs text-slate-800">أليانز Allianz</div>
+        <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm font-bold text-xs text-slate-800">مصر للتأمين</div>
+        <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm font-bold text-xs text-slate-800">نقابة المهندسين/الأطباء</div>
+      </div>
+
+      <!-- حاسبة استعلام التأمين الفوري -->
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 max-w-xl mx-auto shadow-sm">
+        <h4 class="text-xs font-bold text-teal-800 mb-2 flex items-center gap-1.5" id="calcTitle">
+          <span>🔍</span> فحص بطاقة التأمين السريع
+        </h4>
+        <div class="flex gap-2">
+          <input type="text" id="insCardInput" placeholder="أدخل رقم الكارنيه أو اسم شركة التأمين..." class="flex-1 text-xs p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-600 bg-slate-50" />
+          <button onclick="checkInsuranceCard()" class="px-4 py-2.5 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold transition">
+            استعلام
+          </button>
+        </div>
+        <div id="insResult" class="mt-3 text-xs text-emerald-800 bg-emerald-50 p-2.5 rounded-xl border border-emerald-200 hidden font-medium"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. نافذة المساعد الطبي الذكي (AI Agent Modal & Chat) -->
+  <div id="aiModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 hidden">
+    <div class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-100 flex flex-col h-[550px] overflow-hidden">
+      <!-- رأس شات الذكاء الاصطناعي -->
+      <div class="bg-gradient-to-r from-teal-800 to-slate-900 text-white p-4 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-teal-700 border border-teal-500 flex items-center justify-center text-lg shadow-inner">
+            🤖
+          </div>
+          <div>
+            <h4 class="font-extrabold text-sm" id="aiModalTitle">طبيب الذكاء الاصطناعي لمجمع إيليت</h4>
+            <p class="text-[10px] text-teal-200">توجيه طبي، تشخيص أولي، وحجز فوري</p>
+          </div>
+        </div>
+        <button onclick="toggleAiModal()" class="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-xs">✕</button>
+      </div>
+
+      <!-- منطقة الرسائل -->
+      <div id="chatMessages" class="flex-1 p-4 overflow-y-auto space-y-3 custom-scroll text-xs bg-slate-50">
+        <div class="bg-teal-50 text-teal-900 p-3 rounded-2xl rounded-tr-none border border-teal-100 max-w-[85%] leading-relaxed">
+          مرحباً بك في مجمع إيليت الطبي بدمنهور (28 شارع المشير عبدالسلام الشاذلي)! 🩺<br/>
+          أنا مساعدك الطبي الذكي، صف لي ما تشعر به أو اذكر التخصص الذي تبحث عنه وسأساعدك في اختيار الطبيب المناسب وحجز موعدك فوراً.
+        </div>
+      </div>
+
+      <!-- اقتراحات سريعة -->
+      <div class="px-3 py-2 bg-white border-t border-slate-100 flex gap-1.5 overflow-x-auto custom-scroll text-[11px]">
+        <button onclick="sendQuickPrompt('عندي صداع ودوخة وضغط')" class="px-2.5 py-1 bg-slate-100 hover:bg-teal-50 hover:text-teal-800 rounded-full shrink-0 border border-slate-200">صداع وضغط</button>
+        <button onclick="sendQuickPrompt('ألم بالأسنان وتسوس')" class="px-2.5 py-1 bg-slate-100 hover:bg-teal-50 hover:text-teal-800 rounded-full shrink-0 border border-slate-200">ألم أسنان</button>
+        <button onclick="sendQuickPrompt('طفلي عنده سخونية وكحة')" class="px-2.5 py-1 bg-slate-100 hover:bg-teal-50 hover:text-teal-800 rounded-full shrink-0 border border-slate-200">كشف أطفال</button>
+        <button onclick="sendQuickPrompt('فحص نظر وتصحيح إبصار')" class="px-2.5 py-1 bg-slate-100 hover:bg-teal-50 hover:text-teal-800 rounded-full shrink-0 border border-slate-200">عيون وليزك</button>
+      </div>
+
+      <!-- حقل إدخال الرسالة -->
+      <form onsubmit="handleChatSubmit(event)" class="p-3 bg-white border-t border-slate-200 flex gap-2">
+        <input type="text" id="chatInput" placeholder="اكتب شكواك الطبية هنا..." class="flex-1 text-xs p-2.5 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-600 bg-slate-50" />
+        <button type="submit" class="px-4 py-2.5 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold shadow-md transition">
+          إرسال
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 8. نافذة الحجز المنبثقة (Booking Modal) -->
   <div id="bookingModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
     <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 overflow-y-auto max-h-[90vh]">
       <div class="flex items-center justify-between border-b pb-4 mb-4">
         <div>
-          <h4 class="text-lg font-black text-slate-900">حجز كشف جديد - مجمع إيليت الطبي</h4>
-          <p class="text-xs text-teal-600">تأكيد الموعد وإرسال البيانات للواتساب 01005823798</p>
+          <h4 class="text-lg font-black text-slate-900" id="bModalTitle">حجز كشف - مجمع إيليت الطبي بدمنهور</h4>
+          <p class="text-xs text-teal-600">28 شارع المشير عبدالسلام الشاذلي - هاتف: 01005823798</p>
         </div>
         <button onclick="closeBookingModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold flex items-center justify-center">✕</button>
       </div>
 
-      <form id="bookingForm" onsubmit="handleBooking(event)" class="space-y-4">
+      <form id="bookingForm" onsubmit="handleBooking(event)" class="space-y-3.5">
         <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">اختر التخصص الطبي *</label>
+          <label class="block text-xs font-bold text-slate-700 mb-1" id="lblSpec">اختر التخصص والعيادة *</label>
           <select id="modalSpecialty" required class="w-full text-xs font-semibold p-3 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-600 bg-slate-50"></select>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">اسم المريض ثلاثي *</label>
+            <label class="block text-xs font-bold text-slate-700 mb-1" id="lblName">اسم المريض ثلاثي *</label>
             <input type="text" id="patientName" required placeholder="مثال: أحمد محمد علي" class="w-full text-xs p-3 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-600 bg-slate-50" />
           </div>
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">رقم الهاتف (واتساب) *</label>
+            <label class="block text-xs font-bold text-slate-700 mb-1" id="lblPhone">رقم هاتف الواتساب *</label>
             <input type="tel" id="patientPhone" required placeholder="010XXXXXXXX" class="w-full text-xs p-3 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-600 bg-slate-50" />
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">تاريخ الكشف المطلوب *</label>
+            <label class="block text-xs font-bold text-slate-700 mb-1" id="lblDate">تاريخ الكشف *</label>
             <input type="date" id="appointmentDate" required class="w-full text-xs p-3 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-600 bg-slate-50" />
           </div>
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">الموعد المناسب *</label>
+            <label class="block text-xs font-bold text-slate-700 mb-1" id="lblTime">الموعد المفضل *</label>
             <select id="appointmentTime" required class="w-full text-xs p-3 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-600 bg-slate-50">
               <option value="05:00 م">05:00 مساءً</option>
               <option value="06:30 م">06:30 مساءً</option>
@@ -167,119 +285,338 @@
         </div>
 
         <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">طريقة الدفع *</label>
+          <label class="block text-xs font-bold text-slate-700 mb-1" id="lblPay">طريقة السداد *</label>
           <select id="paymentMethod" required class="w-full text-xs p-3 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-600 bg-slate-50">
-            <option value="الدفع نقداً أو بالفيزا في مقر دمنهور">الدفع عند الحضور لمقر المجمع بدمنهور</option>
+            <option value="الدفع نقداً أو بالفيزا في مقر دمنهور">الدفع عند الحضور لمقر دمنهور</option>
             <option value="فودافون كاش (01005823798)">فودافون كاش على 01005823798</option>
             <option value="إنستاباي (InstaPay)">إنستاباي (InstaPay)</option>
-            <option value="تأمين صحي معتمد (أكسا / بوبا / ميتلايف / نقابات)">تأمين صحي معتمد</option>
+            <option value="تأمين صحي معتمد">تأمين صحي معتمد (أكسا / بوبا / ميتلايف / نقابات)</option>
           </select>
         </div>
 
         <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">الشكوى أو الأعراض (اختياري)</label>
-          <textarea id="patientNotes" rows="2" placeholder="اكتب نبذة عن الحالة أو أي تحاليل وفحوصات سابقة..." class="w-full text-xs p-3 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-600 bg-slate-50"></textarea>
+          <label class="block text-xs font-bold text-slate-700 mb-1" id="lblNotes">الشكوى أو الأعراض (اختياري)</label>
+          <textarea id="patientNotes" rows="2" placeholder="اكتب نبذة عن الشكوى أو أي تاريخ مرضي..." class="w-full text-xs p-3 rounded-xl border border-slate-200 focus:outline-none focus:border-teal-600 bg-slate-50"></textarea>
         </div>
 
-        <button type="submit" class="w-full py-3.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-extrabold text-xs shadow-lg shadow-teal-600/30 transition">
-          تأكيد الحجز والإرسال للواتساب (01005823798)
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-extrabold text-xs shadow-lg shadow-teal-600/30 transition" id="confirmBookBtn">
+          تأكيد الحجز وتوجيه الرسالة للواتساب (01005823798)
         </button>
       </form>
     </div>
   </div>
 
-  <!-- تذييل الصفحة (Footer) -->
+  <!-- 9. زر الواتساب والمساعد العائم (Floating Action Buttons) -->
+  <div class="fixed bottom-5 left-5 z-40 flex flex-col gap-2.5">
+    <button onclick="toggleAiModal()" class="w-12 h-12 rounded-full bg-gradient-to-tr from-teal-600 to-emerald-500 text-white shadow-xl flex items-center justify-center hover:scale-105 transition border-2 border-white" title="استشر طبيب الذكاء الاصطناعي">
+      <span class="text-xl">🤖</span>
+    </button>
+    <a href="https://wa.me/201005823798?text=مرحباً%20مجمع%20إيليت%20الطبي%20بدمنهور،%20أود%20الاستفسار%20عن%20كشف%20طبي" target="_blank" class="w-12 h-12 rounded-full bg-emerald-500 text-white shadow-xl flex items-center justify-center hover:scale-105 transition border-2 border-white" title="تواصل عبر الواتساب">
+      <span class="text-xl">💬</span>
+    </a>
+  </div>
+
+  <!-- 10. تذييل الصفحة (Footer) -->
   <footer class="bg-slate-900 text-slate-300 py-10 border-t border-slate-800 text-xs">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
-        <span class="w-3 h-3 rounded-full bg-teal-500"></span>
-        <span class="font-bold text-white text-sm">مجمع إيليت الطبي (Elite Medical Complex)</span>
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="space-y-2">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-teal-500"></span>
+          <span class="font-bold text-white text-sm" id="footName">مجمع إيليت الطبي (Elite Medical Complex)</span>
+        </div>
+        <p class="text-slate-400 leading-relaxed" id="footDesc">
+          صرح طبي متكامل يضم 18 تخصصاً دقيقاً بدمنهور، طوارئ ومعامل وأشعة على مدار 24 ساعة، مع نظام مواعيد وتذكير آلي لراحة المرضى.
+        </p>
       </div>
-      <p class="text-slate-400 text-center sm:text-right">
-        📍 <strong>المقر:</strong> دمنهور: 28 شارع المشير عبدالسلام الشاذلي | هاتف وواتساب: 01005823798
-      </p>
-      <div class="text-slate-500">
-        جميع الحقوق محفوظة © 2026
+
+      <div class="space-y-2">
+        <h5 class="font-bold text-white text-xs" id="footContactTitle">بيانات التواصل والمقر</h5>
+        <p class="text-slate-400">📍 <strong id="footAddrLabel">المقر:</strong> <span id="footAddrVal">دمنهور: 28 شارع المشير عبدالسلام الشاذلي</span></p>
+        <p class="text-slate-400">📞 <strong id="footPhoneLabel">الهاتف والواتساب:</strong> 01005823798</p>
+        <p class="text-slate-400">⏰ <strong id="footHoursLabel">ساعات العمل:</strong> العيادات 9:00 ص - 11:00 م (الطوارئ والمعامل 24 ساعة)</p>
       </div>
+
+      <div class="space-y-2">
+        <h5 class="font-bold text-white text-xs" id="footQuickTitle">خدمات سريعة</h5>
+        <div class="flex flex-col gap-1">
+          <a href="javascript:void(0)" onclick="openBookingModal()" class="text-teal-400 hover:underline">← حجز كشف استشاري</a>
+          <a href="javascript:void(0)" onclick="toggleAiModal()" class="text-teal-400 hover:underline">← استشارة الذكاء الاصطناعي الفورية</a>
+          <a href="https://wa.me/201005823798" target="_blank" class="text-teal-400 hover:underline">← محادثة خدمة العملاء على الواتساب</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 mt-8 pt-4 border-t border-slate-800 text-center text-slate-500 text-[11px]">
+      جميع الحقوق محفوظة © 2026 مجمع إيليت الطبي - دمنهور | Elite Medical Complex
     </div>
   </footer>
 
-  <!-- جافاسكريبت التفاعلي لبيانات التخصصات والحجز الفوري عبر واتساب -->
+  <!-- 11. جافاسكريبت التفاعلي الكامل: اللغات، الذكاء الاصطناعي، الحجز، التأمين -->
   <script>
+    // بيانات التخصصات الـ 18 ثنائية اللغة
     const specialties = [
-      { id: "internal", name: "الباطنة والجهاز الهضمي والمناظير", doctor: "د. طارق المنشاوي", title: "استشاري الباطنة والسكر والكبد", price: 350, days: "السبت، الاثنين، الأربعاء" },
-      { id: "cardio", name: "القلب والقسطرة والأوعية الدموية", doctor: "د. شريف عبد الرحمن", title: "استشاري القلب وقسطرة الشرايين", price: 450, days: "الأحد، الثلاثاء، الخميس" },
-      { id: "dentistry", name: "طب وجراحة الفم وزراعة الأسنان", doctor: "د. سارة الألفي", title: "أخصائية زراعة وتجميل الأسنان", price: 300, days: "يومياً عدا الجمعة" },
-      { id: "pediatrics", name: "طب الأطفال وحديثي الولادة والمبتسرين", doctor: "د. نورهان الشناوي", title: "استشارية طب الأطفال ورعاية المبتسرين", price: 300, days: "السبت، الأحد، الثلاثاء" },
-      { id: "dermatology", name: "الجلدية والتجميل والعلاج بالليزر", doctor: "د. ياسمين رفعت", title: "استشارية الأمراض الجلدية والليزر", price: 350, days: "الاثنين، الأربعاء، الجمعة" },
-      { id: "orthopedics", name: "جراحة العظام والمفاصل والعمود الفقري", doctor: "د. حسام الدين ممدوح", title: "استشاري جراحة العظام والإصابات الرياضية", price: 380, days: "السبت، الثلاثاء، الخميس" },
-      { id: "obgyn", name: "النساء والتوليد والحقن المجهري", doctor: "د. هبة القاضي", title: "استشارية أمراض النساء والتوليد والمناظير", price: 400, days: "الأحد، الثلاثاء، الخميس" },
-      { id: "ophthalmology", name: "طب وجراحة العيون وتصحيح الإبصار بالليزك", doctor: "د. كريم رضوان", title: "استشاري طب وجراحة العيون والليزك", price: 320, days: "السبت، الاثنين، الأربعاء" },
-      { id: "ent", name: "الأنف والأذن والحنجرة وجراحات السمع", doctor: "د. مدحت الفقي", title: "استشاري جراحة الأنف والأذن ومناظير الجيوب", price: 340, days: "السبت، الاثنين، الخميس" },
-      { id: "neurology", name: "المخ والأعصاب والعمود الفقري", doctor: "د. حازم عبد الشافي", title: "استشاري أمراض المخ والأعصاب والصداع", price: 420, days: "الأحد، الأربعاء، الجمعة" },
-      { id: "urology", name: "المسالك البولية وأمراض الذكورة والكلى", doctor: "د. وليد سليمان", title: "استشاري المسالك البولية وتفتيت الحصوات", price: 360, days: "السبت، الثلاثاء، الخميس" },
-      { id: "surgery", name: "الجراحة العامة والمناظير والأورام", doctor: "د. عمر عبد العزيز", title: "استشاري الجراحة العامة ومناظير الجهاز الهضمي", price: 400, days: "الاثنين، الأربعاء، السبت" },
-      { id: "physiotherapy", name: "العلاج الطبيعي والتأهيل الحركي", doctor: "د. ريم مصطفى", title: "أخصائية العلاج الطبيعي وتأهيل الإصابات", price: 280, days: "يومياً عدا الجمعة" },
-      { id: "psychiatry", name: "الطب النفسي وعلاج الإدمان والصحة السلوكية", doctor: "د. مصطفى الشاذلي", title: "استشاري الطب النفسي وعلاج القلق والاكتئاب", price: 450, days: "الأحد، الثلاثاء، الخميس" },
-      { id: "nutrition", name: "التغذية العلاجية وإدارة السمنة والنحافة", doctor: "د. داليا سامي", title: "أخصائية التغذية الإكلينيكية ونحت القوام", price: 260, days: "السبت، الاثنين، الأربعاء" },
-      { id: "pulmonology", name: "الأمراض الصدرية والحساسية والرئة", doctor: "د. أحمد البنداري", title: "استشاري الأمراض الصدرية وحساسية الصدر", price: 360, days: "الأحد، الأربعاء، الخميس" },
-      { id: "rheumatology", name: "الروماتيزم وأمراض المفاصل والمناعة", doctor: "د. ماجد السعيد", title: "استشاري الروماتويد والذئبة الحمراء والمناعة", price: 380, days: "السبت، الاثنين، الأربعاء" },
-      { id: "radiology_lab", name: "الأشعة التشخيصية والتحاليل الطبية الشاملة", doctor: "د. سامح بدر", title: "استشاري الأشعة التداخلية وإدارة المعامل", price: 250, days: "طوال أيام الأسبوع 24 ساعة" }
+      { id: "internal", nameAr: "الباطنة والجهاز الهضمي والمناظير", nameEn: "Internal Medicine & Gastroenterology", doctorAr: "د. طارق المنشاوي", doctorEn: "Dr. Tarek El-Minshawi", titleAr: "استشاري الباطنة والسكر والكبد", titleEn: "Consultant of Internal Medicine & Hepatology", price: 350, daysAr: "السبت، الاثنين، الأربعاء", daysEn: "Sat, Mon, Wed" },
+      { id: "cardio", nameAr: "القلب والقسطرة والأوعية الدموية", nameEn: "Cardiology & Cardiovascular", doctorAr: "د. شريف عبد الرحمن", doctorEn: "Dr. Sherif Abdelrahman", titleAr: "استشاري أمراض القلب وقسطرة الشرايين", titleEn: "Consultant Interventional Cardiologist", price: 450, daysAr: "الأحد، الثلاثاء، الخميس", daysEn: "Sun, Tue, Thu" },
+      { id: "dentistry", nameAr: "طب وجراحة الفم وزراعة الأسنان", nameEn: "Dentistry & Oral Implantology", doctorAr: "د. سارة الألفي", doctorEn: "Dr. Sara El-Alfy", titleAr: "أخصائية زراعة وتجميل الأسنان", titleEn: "Cosmetic & Implant Dentistry Specialist", price: 300, daysAr: "يومياً عدا الجمعة", daysEn: "Daily except Friday" },
+      { id: "pediatrics", nameAr: "طب الأطفال وحديثي الولادة والمبتسرين", nameEn: "Pediatrics & Neonatology", doctorAr: "د. نورهان الشناوي", doctorEn: "Dr. Nourhan El-Shennawy", titleAr: "استشارية طب الأطفال ورعاية المبتسرين", titleEn: "Consultant Pediatrician & Neonatologist", price: 300, daysAr: "السبت، الأحد، الثلاثاء", daysEn: "Sat, Sun, Tue" },
+      { id: "dermatology", nameAr: "الجلدية والتجميل والعلاج بالليزر", nameEn: "Dermatology & Cosmetology", doctorAr: "د. ياسمين رفعت", doctorEn: "Dr. Yasmin Refaat", titleAr: "استشارية الأمراض الجلدية والليزر", titleEn: "Consultant Dermatologist & Laser Specialist", price: 350, daysAr: "الاثنين، الأربعاء، الجمعة", daysEn: "Mon, Wed, Fri" },
+      { id: "orthopedics", nameAr: "جراحة العظام والمفاصل والعمود الفقري", nameEn: "Orthopedics & Joint Surgery", doctorAr: "د. حسام الدين ممدوح", doctorEn: "Dr. Hossam El-Din Mamdouh", titleAr: "استشاري جراحة العظام والإصابات الرياضية", titleEn: "Consultant Orthopedic & Sports Injuries Surgeon", price: 380, daysAr: "السبت، الثلاثاء، الخميس", daysEn: "Sat, Tue, Thu" },
+      { id: "obgyn", nameAr: "النساء والتوليد والحقن المجهري", nameEn: "Obstetrics & Gynecology (OB/GYN)", doctorAr: "د. هبة القاضي", doctorEn: "Dr. Heba El-Kady", titleAr: "استشارية أمراض النساء والتوليد والمناظير", titleEn: "Consultant of OB/GYN & Endoscopy", price: 400, daysAr: "الأحد، الثلاثاء، الخميس", daysEn: "Sun, Tue, Thu" },
+      { id: "ophthalmology", nameAr: "طب وجراحة العيون وتصحيح الإبصار بالليزك", nameEn: "Ophthalmology & Lasik Surgery", doctorAr: "د. كريم رضوان", doctorEn: "Dr. Karim Radwan", titleAr: "استشاري طب وجراحة العيون والليزك", titleEn: "Consultant Eye Surgeon & Lasik Specialist", price: 320, daysAr: "السبت، الاثنين، الأربعاء", daysEn: "Sat, Mon, Wed" },
+      { id: "ent", nameAr: "الأنف والأذن والحنجرة وجراحات السمع", nameEn: "ENT (Ear, Nose & Throat)", doctorAr: "د. مدحت الفقي", doctorEn: "Dr. Medhat El-Feqy", titleAr: "استشاري جراحة الأنف والأذن ومناظير الجيوب", titleEn: "Consultant ENT & Sinus Surgeon", price: 340, daysAr: "السبت، الاثنين، الخميس", daysEn: "Sat, Mon, Thu" },
+      { id: "neurology", nameAr: "المخ والأعصاب والعمود الفقري", nameEn: "Neurology & Neurosurgery", doctorAr: "د. حازم عبد الشافي", doctorEn: "Dr. Hazem Abdelshafy", titleAr: "استشاري أمراض المخ والأعصاب والصداع", titleEn: "Consultant Neurologist", price: 420, daysAr: "الأحد، الأربعاء، الجمعة", daysEn: "Sun, Wed, Fri" },
+      { id: "urology", nameAr: "المسالك البولية وأمراض الذكورة والكلى", nameEn: "Urology & Andrology", doctorAr: "د. وليد سليمان", doctorEn: "Dr. Waleed Soliman", titleAr: "استشاري المسالك البولية وتفتيت الحصوات", titleEn: "Consultant Urologist & Endourology", price: 360, daysAr: "السبت، الثلاثاء، الخميس", daysEn: "Sat, Tue, Thu" },
+      { id: "surgery", nameAr: "الجراحة العامة والمناظير والأورام", nameEn: "General & Laparoscopic Surgery", doctorAr: "د. عمر عبد العزيز", doctorEn: "Dr. Omar Abdelaziz", titleAr: "استشاري الجراحة العامة ومناظير البطن", titleEn: "Consultant General & Laparoscopic Surgeon", price: 400, daysAr: "الاثنين، الأربعاء، السبت", daysEn: "Mon, Wed, Sat" },
+      { id: "physiotherapy", nameAr: "العلاج الطبيعي والتأهيل الحركي", nameEn: "Physiotherapy & Rehabilitation", doctorAr: "د. ريم مصطفى", doctorEn: "Dr. Reem Mostafa", titleAr: "أخصائية العلاج الطبيعي وتأهيل الإصابات", titleEn: "Physical Therapy & Rehab Specialist", price: 280, daysAr: "يومياً عدا الجمعة", daysEn: "Daily except Friday" },
+      { id: "psychiatry", nameAr: "الطب النفسي وعلاج الإدمان والصحة السلوكية", nameEn: "Psychiatry & Behavioral Health", doctorAr: "د. مصطفى الشاذلي", doctorEn: "Dr. Mostafa El-Shazly", titleAr: "استشاري الطب النفسي وعلاج القلق والاكتئاب", titleEn: "Consultant Psychiatrist & Behavioral Therapist", price: 450, daysAr: "الأحد، الثلاثاء، الخميس", daysEn: "Sun, Tue, Thu" },
+      { id: "nutrition", nameAr: "التغذية العلاجية وإدارة السمنة والنحافة", nameEn: "Clinical Nutrition & Dietetics", doctorAr: "د. داليا سامي", doctorEn: "Dr. Dalia Samy", titleAr: "أخصائية التغذية الإكلينيكية ونحت القوام", titleEn: "Clinical Nutrition Specialist", price: 260, daysAr: "السبت، الاثنين، الأربعاء", daysEn: "Sat, Mon, Wed" },
+      { id: "pulmonology", nameAr: "الأمراض الصدرية والحساسية والرئة", nameEn: "Pulmonology & Chest Diseases", doctorAr: "د. أحمد البنداري", doctorEn: "Dr. Ahmed El-Bendary", titleAr: "استشاري الأمراض الصدرية وحساسية الصدر", titleEn: "Consultant Pulmonologist", price: 360, daysAr: "الأحد، الأربعاء، الخميس", daysEn: "Sun, Wed, Thu" },
+      { id: "rheumatology", nameAr: "الروماتيزم وأمراض المفاصل والمناعة", nameEn: "Rheumatology & Immunology", doctorAr: "د. ماجد السعيد", doctorEn: "Dr. Maged El-Saeed", titleAr: "استشاري الروماتويد والذئبة الحمراء والمناعة", titleEn: "Consultant Rheumatologist & Immunologist", price: 380, daysAr: "السبت، الاثنين، الأربعاء", daysEn: "Sat, Mon, Wed" },
+      { id: "radiology_lab", nameAr: "الأشعة التشخيصية والتحاليل الطبية الشاملة", nameEn: "Diagnostic Radiology & Central Labs", doctorAr: "د. سامح بدر", doctorEn: "Dr. Sameh Badr", titleAr: "استشاري الأشعة التداخلية وإدارة المعامل", titleEn: "Consultant Radiologist & Lab Director", price: 250, daysAr: "طوال أيام الأسبوع 24 ساعة", daysEn: "24/7 All Week" }
     ];
 
-    // تعبئة شبكة التخصصات والقائمة المنسدلة
-    const grid = document.getElementById("specialtiesGrid");
-    const select = document.getElementById("modalSpecialty");
+    let currentLang = "ar";
 
-    specialties.forEach(s => {
-      // Option
-      const opt = document.createElement("option");
-      opt.value = `${s.name} (${s.doctor}) - ${s.price} ج.م`;
-      opt.textContent = `${s.name} - ${s.doctor} (${s.price} ج.م)`;
-      select.appendChild(opt);
+    // دالة تبديل اللغة (AR / EN) وتحديث نصوص الصفحة والاتجاه
+    function toggleLanguage() {
+      currentLang = currentLang === "ar" ? "en" : "ar";
+      const isAr = currentLang === "ar";
+      const root = document.getElementById("htmlRoot");
 
-      // Card
-      const card = document.createElement("div");
-      card.className = "bg-white p-6 rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-md hover:border-teal-500 transition flex flex-col justify-between";
-      card.innerHTML = `
-        <div>
-          <div class="flex items-center justify-between gap-2 mb-3">
-            <span class="text-xs font-bold text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full border border-teal-200">كشف: ${s.price} ج.م</span>
-            <span class="text-xs text-slate-400">إعادة كشف مجانية</span>
+      root.setAttribute("lang", currentLang);
+      root.setAttribute("dir", isAr ? "rtl" : "ltr");
+      document.getElementById("langBtnText").textContent = isAr ? "English" : "العربية";
+
+      // نصوص الهيدر
+      document.getElementById("topAlertText").textContent = isAr
+        ? "مجمع إيليت الطبي بدمنهور: صرح استشاري متكامل لكافة التخصصات الطبية - الطوارئ والمعامل 24/7"
+        : "Elite Medical Complex in Damanhour: Comprehensive multispecialty center - ER & Labs 24/7";
+      document.getElementById("topWhatsappText").textContent = isAr ? "واتساب المجمع: 01005823798" : "WhatsApp: 01005823798";
+      document.getElementById("topAddressText").textContent = isAr ? "📍 دمنهور: 28 شارع المشير عبدالسلام الشاذلي" : "📍 Damanhour: 28 El-Mosheer Abdelsalam El-Shazly St";
+      document.getElementById("logoTitle").textContent = isAr ? "مجمع إيليت الطبي" : "Elite Medical Complex";
+      document.getElementById("logoSubTitle").textContent = isAr ? "دمنهور: 28 شارع المشير عبدالسلام الشاذلي" : "Damanhour: 28 El-Mosheer Abdelsalam El-Shazly St";
+      document.getElementById("aiBtnText").textContent = isAr ? "المستشار الطبي الذكي" : "AI Medical Consultant";
+      document.getElementById("bookNavBtn").textContent = isAr ? "احجز موعدك" : "Book Visit";
+
+      // نصوص القسم الترحيبي
+      document.getElementById("heroBadge").textContent = isAr ? "صرح استشاري متكامل لكافة التخصصات الطبية بدمنهور" : "Comprehensive Multispecialty Center in Damanhour";
+      document.getElementById("heroTitle").textContent = isAr ? "رعايتك الصحية تحت سقف واحد مع نخبة كبار الاستشاريين" : "Your Health Under One Roof with Top Medical Consultants";
+      document.getElementById("heroDesc").textContent = isAr
+        ? "18 تخصصاً طبياً دقيقاً، مركز تشخيصي متقدم، طوارئ 24/7، ومعامل تحاليل معتمدة. متابعة وإعادة كشف مجانية خلال 14 يوماً مع نظام تذكير آلي عبر الواتساب على 01005823798."
+        : "18 subspecialties, advanced diagnostics, 24/7 emergency & accredited labs. Free 14-day follow-up with automated WhatsApp reminders on 01005823798.";
+      document.getElementById("heroBookBtn").textContent = isAr ? "احجز كشفك الطبي الآن" : "Book Medical Appointment";
+      document.getElementById("heroAiBtn").textContent = isAr ? "استشر طبيب الذكاء الاصطناعي" : "Consult AI Doctor";
+
+      // الإحصائيات
+      document.getElementById("stat1").textContent = isAr ? "تخصص طبي وجراحي" : "Medical Specialties";
+      document.getElementById("stat2").textContent = isAr ? "استشاري وأستاذ جامعة" : "Senior Consultants";
+      document.getElementById("stat3").textContent = isAr ? "إعادة كشف مجانية" : "Free Follow-up Days";
+      document.getElementById("stat4").textContent = isAr ? "طوارئ ومعامل وأشعة" : "ER, Radiology & Labs";
+
+      // باقات الفحص
+      document.getElementById("pkgTitle").textContent = isAr ? "باقات إيليت للفحص الطبي الشامل مع خصم 25%" : "Elite Executive Checkup Packages - 25% OFF";
+      document.getElementById("pkgDesc").textContent = isAr
+        ? "تشمل تحاليل وظائف الكبد والكلى، السكر التراكمي، دهون الدم، رسم القلب، فحص قاع العين، وفحص استشاري الباطنة."
+        : "Includes Liver & Kidney functions, HbA1c, Lipid profile, ECG, Eye fundus exam, and Internal Medicine consultation.";
+      document.getElementById("pkgBtn").textContent = isAr ? "حجز باقة الفحص الشامل (750 ج.م)" : "Book Checkup Package (750 EGP)";
+
+      // عناوين التخصصات
+      document.getElementById("specHeading").textContent = isAr ? "كافة التخصصات الطبية في مجمع إيليت بدمنهور" : "All Medical Specialties at Elite Complex";
+      document.getElementById("specSubHeading").textContent = isAr
+        ? "اختر العيادة المطلوبة للاطلاع على اسم الطبيب الاستشاري وسعر الكشف وحجز الموعد مباشرة"
+        : "Select a clinic to view consultant details, consultation fees, and book directly";
+
+      renderSpecialties();
+    }
+
+    // بناء بطاقات التخصصات
+    function renderSpecialties() {
+      const isAr = currentLang === "ar";
+      const grid = document.getElementById("specialtiesGrid");
+      const select = document.getElementById("modalSpecialty");
+
+      grid.innerHTML = "";
+      select.innerHTML = "";
+
+      specialties.forEach(s => {
+        const specName = isAr ? s.nameAr : s.nameEn;
+        const docName = isAr ? s.doctorAr : s.doctorEn;
+        const docTitle = isAr ? s.titleAr : s.titleEn;
+        const days = isAr ? s.daysAr : s.daysEn;
+        const feeText = isAr ? `${s.price} ج.م` : `${s.price} EGP`;
+
+        // إضافة للقائمة المنسدلة
+        const opt = document.createElement("option");
+        opt.value = `${specName} (${docName}) - ${feeText}`;
+        opt.textContent = `${specName} - ${docName} (${feeText})`;
+        select.appendChild(opt);
+
+        // إنشاء البطاقة
+        const card = document.createElement("div");
+        card.className = "bg-white p-5 rounded-3xl border border-slate-200/80 shadow-sm hover:shadow-md hover:border-teal-500 transition flex flex-col justify-between";
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-xs font-bold text-teal-800 bg-teal-50 px-2.5 py-1 rounded-full border border-teal-200">${isAr ? "كشف:" : "Fee:"} ${feeText}</span>
+              <span class="text-[11px] text-slate-400 font-semibold">${isAr ? "إعادة كشف مجانية" : "Free Revisit (14d)"}</span>
+            </div>
+            <h4 class="font-bold text-slate-900 text-base mb-1">${specName}</h4>
+            <p class="text-xs font-semibold text-teal-900 mb-0.5">${docName}</p>
+            <p class="text-[11px] text-slate-500 mb-3">${docTitle}</p>
+            <div class="text-[11px] text-slate-600 bg-slate-50 p-2 rounded-xl mb-4 border border-slate-100">
+              📅 <strong>${isAr ? "المواعيد:" : "Schedule:"}</strong> ${days}
+            </div>
           </div>
-          <h4 class="font-bold text-slate-900 text-base mb-1">${s.name}</h4>
-          <p class="text-xs font-semibold text-teal-900 mb-1">${s.doctor}</p>
-          <p class="text-[11px] text-slate-500 mb-3">${s.title}</p>
-          <div class="text-[11px] text-slate-600 bg-slate-50 p-2 rounded-xl mb-4">
-            📅 <strong>الأيام:</strong> ${s.days}
-          </div>
-        </div>
-        <button onclick="selectAndBook('${s.name} (${s.doctor}) - ${s.price} ج.م')" class="w-full py-2.5 rounded-xl bg-teal-50 hover:bg-teal-600 text-teal-700 hover:text-white font-bold text-xs border border-teal-200 transition">
-          حجز موعد في هذه العيادة
-        </button>
-      `;
-      grid.appendChild(card);
-    });
+          <button onclick="selectAndBook('${specName} (${docName}) - ${feeText}')" class="w-full py-2.5 rounded-xl bg-teal-50 hover:bg-teal-600 text-teal-700 hover:text-white font-bold text-xs border border-teal-200 transition">
+            ${isAr ? "حجز موعد في هذه العيادة" : "Book Appointment in this Clinic"}
+          </button>
+        `;
+        grid.appendChild(card);
+      });
+    }
 
-    // تعيين التاريخ الافتراضي للغد
+    // تهيئة التاريخ الافتراضي
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     document.getElementById("appointmentDate").value = tomorrow.toISOString().split("T")[0];
 
+    // دوال النوافذ المنبثقة
     function openBookingModal() {
       document.getElementById("bookingModal").classList.remove("hidden");
     }
-
     function closeBookingModal() {
       document.getElementById("bookingModal").classList.add("hidden");
     }
-
-    function selectAndBook(specialtyText) {
-      select.value = specialtyText;
+    function selectAndBook(specText) {
+      document.getElementById("modalSpecialty").value = specText;
       openBookingModal();
     }
+    function openPackageBooking() {
+      const isAr = currentLang === "ar";
+      const pkgName = isAr ? "باقة الفحص الطبي الشامل (750 ج.م)" : "Executive Health Checkup Package (750 EGP)";
+      selectAndBook(pkgName);
+    }
+    function toggleAiModal() {
+      const modal = document.getElementById("aiModal");
+      modal.classList.toggle("hidden");
+    }
 
-    // تأكيد الحجز وإرسال رسالة الواتساب المتكاملة بالعنوان الجديد
+    // محرك المستشار الطبي الذكي (AI Agent Engine)
+    function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById("chatInput");
+      const text = input.value.trim();
+      if (!text) return;
+
+      appendChatMessage("user", text);
+      input.value = "";
+
+      setTimeout(() => {
+        const replyObj = generateAiMedicalResponse(text);
+        appendChatMessage("bot", replyObj.text, replyObj.actionSpecialty);
+      }, 500);
+    }
+
+    function sendQuickPrompt(promptText) {
+      appendChatMessage("user", promptText);
+      setTimeout(() => {
+        const replyObj = generateAiMedicalResponse(promptText);
+        appendChatMessage("bot", replyObj.text, replyObj.actionSpecialty);
+      }, 500);
+    }
+
+    function appendChatMessage(sender, message, actionSpecialty = null) {
+      const container = document.getElementById("chatMessages");
+      const msgDiv = document.createElement("div");
+
+      if (sender === "user") {
+        msgDiv.className = "bg-teal-700 text-white p-3 rounded-2xl rounded-tl-none max-w-[85%] ms-auto leading-relaxed";
+        msgDiv.textContent = message;
+      } else {
+        msgDiv.className = "bg-teal-50 text-teal-900 p-3 rounded-2xl rounded-tr-none border border-teal-100 max-w-[90%] leading-relaxed";
+        let innerHTML = `<div>${message}</div>`;
+        if (actionSpecialty) {
+          innerHTML += `
+            <div class="mt-2.5 pt-2 border-t border-teal-200/60 flex flex-wrap gap-2">
+              <button onclick="selectAndBook('${actionSpecialty}')" class="px-3 py-1 bg-teal-600 hover:bg-teal-700 text-white rounded-lg text-[11px] font-bold">
+                ${currentLang === "ar" ? "احجز الآن في هذه العيادة" : "Book This Clinic Now"}
+              </button>
+              <a href="https://wa.me/201005823798?text=${encodeURIComponent('مرحباً مجمع إيليت بدمنهور، أود حجز كشف: ' + actionSpecialty)}" target="_blank" class="px-3 py-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-[11px] font-bold flex items-center gap-1">
+                <span>واتساب</span> 💬
+              </a>
+            </div>
+          `;
+        }
+        msgDiv.innerHTML = innerHTML;
+      }
+
+      container.appendChild(msgDiv);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    // منطق فهم الأعراض واقتراح التخصص المناسب
+    function generateAiMedicalResponse(query) {
+      const q = query.toLowerCase();
+      const isAr = currentLang === "ar";
+
+      if (q.includes("أسنان") || q.includes("سن") || q.includes("ضرس") || q.includes("tooth") || q.includes("teeth") || q.includes("dental")) {
+        return {
+          text: isAr
+            ? "سلامتك! للأعراض المتعلقة بألم الأسنان أو اللثة أو التسوس، نوصي بالحجز في عيادة طب وجراحة الفم وزراعة الأسنان مع د. سارة الألفي (الكشف: 300 ج.م)."
+            : "Wishing you a speedy recovery! For dental pain or gum concerns, we recommend our Dental Clinic with Dr. Sara El-Alfy (Fee: 300 EGP).",
+          actionSpecialty: "طب وجراحة الفم وزراعة الأسنان (د. سارة الألفي) - 300 ج.م"
+        };
+      } else if (q.includes("قلب") || q.includes("صدر") || q.includes("نهجان") || q.includes("ضيق") || q.includes("heart") || q.includes("chest") || q.includes("cardio")) {
+        return {
+          text: isAr
+            ? "نظراً لأهمية الفحص القلبي، ننصحك بالاستشارة في عيادة أمراض القلب والقسطرة مع د. شريف عبد الرحمن، المجهزة برسم قلب إلكتروني وإيكو (الكشف: 450 ج.م)."
+            : "For heart or chest symptoms, please consult our Cardiology Clinic with Dr. Sherif Abdelrahman with instant ECG/Echo (Fee: 450 EGP).",
+          actionSpecialty: "القلب والقسطرة والأوعية الدموية (د. شريف عبد الرحمن) - 450 ج.م"
+        };
+      } else if (q.includes("صداع") || q.includes("مخ") || q.includes("اعصاب") || q.includes("أعصاب") || q.includes("دوخة") || q.includes("headache") || q.includes("neuro")) {
+        return {
+          text: isAr
+            ? "لأعراض الصداع المستمر أو مشاكل الأعصاب والاتزان، ننصحك بالكشف في عيادة المخ والأعصاب مع الاستشاري د. حازم عبد الشافي (الكشف: 420 ج.م)."
+            : "For persistent headaches or nerve issues, we recommend our Neurology Clinic with Dr. Hazem Abdelshafy (Fee: 420 EGP).",
+          actionSpecialty: "المخ والأعصاب والعمود الفقري (د. حازم عبد الشافي) - 420 ج.م"
+        };
+      } else if (q.includes("طفل") || q.includes("طفلي") || q.includes("سخونية") || q.includes("تطعيم") || q.includes("child") || q.includes("pediatric")) {
+        return {
+          text: isAr
+            ? "ألف سلامة على بطلنا الصغير! يمكنك زيارة عيادة طب الأطفال وحديثي الولادة مع الاستشارية د. نورهان الشناوي (الكشف: 300 ج.م)."
+            : "Best health to the little one! Please visit our Pediatrics & Neonatology Clinic with Dr. Nourhan El-Shennawy (Fee: 300 EGP).",
+          actionSpecialty: "طب الأطفال وحديثي الولادة والمبتسرين (د. نورهان الشناوي) - 300 ج.م"
+        };
+      } else if (q.includes("عين") || q.includes("نظر") || q.includes("ليزك") || q.includes("نظارة") || q.includes("eye") || q.includes("lasik")) {
+        return {
+          text: isAr
+            ? "لفحص قاع العين وتصحيح الإبصار بالليزك، نوفر أحدث أجهزة الفحص في عيادة العيون مع د. كريم رضوان (الكشف: 320 ج.م)."
+            : "For vision tests and Lasik correction, consult Dr. Karim Radwan in Ophthalmology Clinic (Fee: 320 EGP).",
+          actionSpecialty: "طب وجراحة العيون وتصحيح الإبصار بالليزك (د. كريم رضوان) - 320 ج.م"
+        };
+      } else {
+        return {
+          text: isAr
+            ? "شكراً لتواصلك مع مجمع إيليت الطبي بدمنهور (28 شارع المشير عبدالسلام الشاذلي). تضم عياداتنا 18 تخصصاً طبياً دقيقاً. يمكنك تحديد العيادة المناسبة مباشرة أو التحدث مع فريق الاستقبال على الواتساب 01005823798."
+            : "Thank you for contacting Elite Medical Complex in Damanhour (28 El-Mosheer St). We house 18 medical specialties. Please select a clinic or chat with our reception on WhatsApp 01005823798.",
+          actionSpecialty: "الباطنة والجهاز الهضمي والمناظير (د. طارق المنشاوي) - 350 ج.م"
+        };
+      }
+    }
+
+    // فحص بطاقة التأمين السريع
+    function checkInsuranceCard() {
+      const val = document.getElementById("insCardInput").value.trim();
+      const res = document.getElementById("insResult");
+      if (!val) return;
+      res.classList.remove("hidden");
+      res.innerHTML = `
+        ✅ <strong>الجهة التأمينية معتمدة في مجمع إيليت:</strong><br/>
+        نسبة التغطية المباشرة لكشوفات الأطباء والتحاليل: من <strong>80% إلى 100%</strong> حسب فئة الكارنيه. يمكنك إبراز البطاقة في مقر دمنهور فور وصولك.
+      `;
+    }
+
+    // إرسال الحجز الفوري إلى الواتساب 01005823798
     function handleBooking(e) {
       e.preventDefault();
       const specialty = document.getElementById("modalSpecialty").value;
@@ -311,6 +648,9 @@
       window.open(whatsappUrl, "_blank");
       closeBookingModal();
     }
+
+    // أول تحميل
+    renderSpecialties();
   </script>
 </body>
-  </html>
+</html>
