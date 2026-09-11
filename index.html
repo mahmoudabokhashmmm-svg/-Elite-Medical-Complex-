@@ -4,7 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title id="pageTitle">مجمع إيليت الطبي | Elite Medical Complex - دمنهور</title>
-  <meta name="description" content="مجمع إيليت الطبي التخصصي الشامل بدمنهور: 18 تخصصاً طبياً، طوارئ ومعامل وأشعة 24/7، حجز فوري عبر الواتساب 01005823798" />
+  <meta name="description" content="مجمع إيليت الطبي التخصصي بدمنهور: 18 تخصصاً طبياً، طوارئ ومعامل وأشعة 24/7، حجز فوري عبر الواتساب 01005823798" />
+
+  <!-- Favicon طبي مدمج SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f766e'/><path d='M50 20 v60 M20 50 h60' stroke='white' stroke-width='14' stroke-linecap='round'/></svg>" type="image/svg+xml">
+
+  <!-- Open Graph / Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mahmoudabokhashmmm-svg.github.io/-Elite-Medical-Complex-/" />
+  <meta property="og:title" content="مجمع إيليت الطبي | Elite Medical Complex - دمنهور" />
+  <meta property="og:description" content="صرح طبي استشاري متكامل: 18 تخصصاً، طوارئ ومعامل 24/7، حجز فوري عبر الواتساب." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&h=630&q=80" />
+  <meta property="og:locale" content="ar_AR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="مجمع إيليت الطبي - دمنهور" />
+  <meta name="twitter:description" content="18 تخصصاً طبياً دقيقاً واستشارات نخبة الأطباء بدمنهور. احجز الآن أونلاين." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&h=630&q=80" />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -44,10 +61,9 @@
     </div>
   </div>
 
-  <!-- 2. رأس الصفحة بعد إزالة الأيقونة والشارة المسببة للخلل وضبط المقاسات بدقة -->
+  <!-- 2. رأس الصفحة -->
   <header class="bg-white/95 backdrop-blur shadow-xs sticky top-0 z-40 border-b border-slate-100 w-full">
     <div class="max-w-7xl mx-auto px-3 py-2.5 flex items-center justify-between gap-2">
-      <!-- اسم المجمع فقط بدون أيقونات أو شارات جانبية زائدة -->
       <div class="min-w-0 flex-1">
         <h1 class="text-base sm:text-lg font-black text-slate-900 tracking-tight leading-tight truncate" id="logoTitle">
           مجمع إيليت الطبي
@@ -57,9 +73,7 @@
         </p>
       </div>
 
-      <!-- أزرار اللغة والحجز متناسقة ومحكمة 100% داخل حدود الشاشة -->
       <div class="flex items-center gap-1.5 shrink-0">
-        <!-- زر تحويل اللغة -->
         <button
           onclick="toggleLanguage()"
           class="flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-teal-50 hover:bg-teal-100 border border-teal-200 text-teal-900 font-bold text-[11px] transition cursor-pointer"
@@ -69,7 +83,6 @@
           <span id="langBtnText">EN</span>
         </button>
 
-        <!-- زر الحجز المباشر -->
         <button
           onclick="openBookingModal()"
           class="px-3.5 py-1.5 rounded-lg bg-teal-700 hover:bg-teal-800 text-white font-extrabold text-[11px] shadow-xs transition cursor-pointer"
@@ -114,7 +127,6 @@
         </a>
       </div>
 
-      <!-- إحصائيات المجمع -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-8 max-w-3xl mx-auto">
         <div class="bg-white/5 border border-white/10 p-3 rounded-2xl backdrop-blur">
           <div class="text-xl sm:text-2xl font-black text-emerald-300">18+</div>
@@ -154,18 +166,16 @@
     </div>
   </section>
 
-  <!-- 5. قسم التخصصات الطبية الشاملة -->
+  <!-- 5. قسم التخصصات الطبية -->
   <main class="max-w-7xl mx-auto px-3 py-6 flex-1 w-full" id="specialtiesSection">
     <div class="text-center max-w-2xl mx-auto mb-6">
       <h3 class="text-xl sm:text-2xl font-black text-slate-900 mb-1" id="specHeading">كافة التخصصات الطبية في مجمع إيليت بدمنهور</h3>
       <p class="text-slate-600 text-xs" id="specSubHeading">اختر العيادة المطلوبة لمعرفة اسم الطبيب وسعر الكشف والحجز الفوري</p>
     </div>
-
-    <!-- شبكة التخصصات الـ 18 -->
     <div id="specialtiesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
   </main>
 
-  <!-- 6. بوابة التأمين الصحي المعتمد -->
+  <!-- 6. بوابة التأمين الصحي -->
   <section class="bg-slate-100/90 border-y border-slate-200 py-8 px-3 w-full">
     <div class="max-w-7xl mx-auto">
       <div class="text-center max-w-xl mx-auto mb-5">
@@ -182,7 +192,6 @@
         <div class="bg-white p-2.5 rounded-xl border border-slate-200 font-bold text-xs text-slate-800">نقابة المهندسين</div>
       </div>
 
-      <!-- استعلام التأمين السريع -->
       <div class="bg-white rounded-2xl p-4 border border-slate-200 max-w-lg mx-auto shadow-2xs">
         <h4 class="text-xs font-bold text-teal-800 mb-2 flex items-center gap-1" id="calcTitle">
           <span>🔍</span> فحص بطاقة التأمين
@@ -198,7 +207,69 @@
     </div>
   </section>
 
-  <!-- 7. نافذة الحجز المنبثقة (Booking Modal) -->
+  <!-- 7. قسم الموقع وخريطة الوصول الدقيقة -->
+  <section class="max-w-7xl mx-auto px-3 py-8 w-full">
+    <div class="text-center max-w-xl mx-auto mb-6">
+      <h3 class="text-lg sm:text-xl font-black text-slate-900 mb-1" id="mapHeading">موقعنا في دمنهور</h3>
+      <p class="text-[11px] text-slate-600" id="mapSubHeading">سهولة الوصول عبر شارع المشير عبدالسلام الشاذلي مع توافر أماكن انتظار سيارات</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 items-stretch">
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs flex flex-col justify-between">
+        <div class="space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-xl bg-teal-50 text-teal-700 font-bold flex items-center justify-center text-sm shrink-0">📍</span>
+            <div>
+              <h4 class="text-xs font-bold text-slate-900" id="mapCardTitle">العنوان الدقيق</h4>
+              <p class="text-[11px] text-slate-600" id="mapCardAddr">28 شارع المشير عبدالسلام الشاذلي، دمنهور، البحيرة</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-xl bg-teal-50 text-teal-700 font-bold flex items-center justify-center text-sm shrink-0">🚗</span>
+            <div>
+              <h4 class="text-xs font-bold text-slate-900" id="mapParkTitle">مواقف السيارات</h4>
+              <p class="text-[11px] text-slate-600" id="mapParkDesc">ساحة انتظار مخصصة لرواد المجمع على مدار 24 ساعة</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-8 h-8 rounded-xl bg-teal-50 text-teal-700 font-bold flex items-center justify-center text-sm shrink-0">🚑</span>
+            <div>
+              <h4 class="text-xs font-bold text-slate-900" id="mapErTitle">مدخل الطوارئ</h4>
+              <p class="text-[11px] text-slate-600" id="mapErDesc">مدخل خاص ومجهز لاستقبال سيارات الإسعاف والحالات الحرجة</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- رابط الاتجاهات الدقيق بالإحداثيات -->
+        <a
+          href="https://www.google.com/maps?q=31.030622,30.452233"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-5 w-full py-2.5 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-black text-xs text-center block transition shadow-xs"
+          id="openMapBtn"
+        >
+          فتح الاتجاهات عبر Google Maps ↗
+        </a>
+      </div>
+
+      <!-- خريطة تفاعلية بالإحداثيات الدقيقة -->
+      <div class="lg:col-span-2 rounded-2xl overflow-hidden border border-slate-200 shadow-2xs h-72 lg:h-auto min-h-[280px]">
+        <iframe
+          title="Elite Medical Complex Location"
+          src="https://maps.google.com/maps?q=31.030622,30.452233&hl=ar&z=17&output=embed"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="w-full h-full"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. نافذة الحجز المنبثقة (Booking Modal) -->
   <div id="bookingModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-3 hidden">
     <div class="bg-white rounded-3xl max-w-md w-full p-5 shadow-2xl border border-slate-100 overflow-y-auto max-h-[92vh]">
       <div class="flex items-center justify-between border-b pb-3 mb-3">
@@ -263,7 +334,7 @@
     </div>
   </div>
 
-  <!-- 8. تذييل الصفحة (Footer) -->
+  <!-- 9. تذييل الصفحة (Footer) -->
   <footer class="bg-slate-900 text-slate-300 py-8 border-t border-slate-800 text-xs w-full">
     <div class="max-w-7xl mx-auto px-3 grid grid-cols-1 sm:grid-cols-3 gap-5">
       <div class="space-y-1.5">
@@ -295,7 +366,7 @@
     </div>
   </footer>
 
-  <!-- 9. جافاسكريبت التحكم باللغة والتخصصات والحجز -->
+  <!-- 10. الجافاسكريبت -->
   <script>
     const specialties = [
       { id: "internal", nameAr: "الباطنة والجهاز الهضمي والمناظير", nameEn: "Internal Medicine & Gastroenterology", doctorAr: "د. طارق المنشاوي", doctorEn: "Dr. Tarek El-Minshawi", titleAr: "استشاري الباطنة والسكر والكبد", titleEn: "Consultant of Internal Medicine & Hepatology", price: 350, daysAr: "السبت، الاثنين، الأربعاء", daysEn: "Sat, Mon, Wed" },
@@ -371,6 +442,18 @@
       document.getElementById("calcTitle").innerHTML = isAr ? "<span>🔍</span> فحص بطاقة التأمين" : "<span>🔍</span> Verify Insurance Card";
       document.getElementById("insCardInput").placeholder = isAr ? "أدخل اسم شركة التأمين..." : "Enter insurance provider name...";
       document.getElementById("insCheckBtn").textContent = isAr ? "استعلام" : "Verify";
+
+      document.getElementById("mapHeading").textContent = isAr ? "موقعنا في دمنهور" : "Our Location in Damanhour";
+      document.getElementById("mapSubHeading").textContent = isAr
+        ? "سهولة الوصول عبر شارع المشير عبدالسلام الشاذلي مع توافر أماكن انتظار سيارات"
+        : "Easily accessible via El-Mosheer Abdelsalam El-Shazly St with dedicated parking";
+      document.getElementById("mapCardTitle").textContent = isAr ? "العنوان الدقيق" : "Exact Address";
+      document.getElementById("mapCardAddr").textContent = isAr ? "28 شارع المشير عبدالسلام الشاذلي، دمنهور، البحيرة" : "28 El-Mosheer Abdelsalam El-Shazly St, Damanhour";
+      document.getElementById("mapParkTitle").textContent = isAr ? "مواقف السيارات" : "Parking Area";
+      document.getElementById("mapParkDesc").textContent = isAr ? "ساحة انتظار مخصصة لرواد المجمع على مدار 24 ساعة" : "24/7 dedicated visitor parking space";
+      document.getElementById("mapErTitle").textContent = isAr ? "مدخل الطوارئ" : "Emergency Entrance";
+      document.getElementById("mapErDesc").textContent = isAr ? "مدخل خاص ومجهز لاستقبال سيارات الإسعاف والحالات الحرجة" : "Dedicated ambulance and trauma bay entrance";
+      document.getElementById("openMapBtn").textContent = isAr ? "فتح الاتجاهات عبر Google Maps ↗" : "Open in Google Maps ↗";
 
       document.getElementById("bModalTitle").textContent = isAr ? "حجز كشف - مجمع إيليت بدمنهور" : "Book Appointment - Elite Damanhour";
       document.getElementById("bModalSubTitle").textContent = isAr ? "28 شارع المشير عبدالسلام الشاذلي - 01005823798" : "28 El-Mosheer Abdelsalam El-Shazly St - 01005823798";
@@ -512,3 +595,4 @@
   </script>
 </body>
 </html>
+
